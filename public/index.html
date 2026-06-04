@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WeCare Nearby Resources API Demo</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="demo-stage">
+      <aside class="panel controls-panel" aria-labelledby="test-user-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">API input</p>
+            <h1 id="test-user-title">Test user</h1>
+          </div>
+          <span class="api-pill">API-owned matching</span>
+        </div>
+
+        <label>
+          Demo profile
+          <select id="profileSelect"></select>
+        </label>
+
+        <div class="form-grid">
+          <label>
+            AZ zipcode
+            <input id="zipcodeInput" inputmode="numeric" maxlength="5" />
+          </label>
+          <label>
+            Reward points from app
+            <input id="pointsInput" type="number" min="0" step="10" />
+          </label>
+        </div>
+
+        <label>
+          Classifier categories
+          <input id="categoriesInput" placeholder="medicine, pharmacy, pets" />
+        </label>
+
+        <div class="toggle-row">
+          <label class="checkbox-label">
+            <input id="petsInput" type="checkbox" />
+            Has pets
+          </label>
+          <button id="refreshButton" type="button">Refresh resources</button>
+        </div>
+        <section class="api-note">
+          <h2>Demo contract</h2>
+          <p>
+            WeCare sends the current point balance, ZIP/location, district, and Tanmay's classifier categories.
+            Nearby places are live; offer copy is mocked.
+          </p>
+        </section>
+      </aside>
+
+      <section class="phone-frame" aria-label="WeCare Rewards page simulation">
+        <div class="phone-screen">
+          <header class="rewards-header">
+            <div class="brand-row">
+              <div class="brand-mark" aria-hidden="true"></div>
+              <strong>WeCare</strong>
+            </div>
+            <div class="points-badge" aria-label="User reward points">
+              <span id="pointsValue">0</span>
+              <small>points</small>
+            </div>
+          </header>
+
+          <section class="rewards-intro">
+            <p class="eyebrow">Rewards</p>
+            <h1>Community Rewards</h1>
+            <div class="reward-meter" aria-label="Coupon unlock progress">
+              <div>
+                <span><strong id="remainingValue">50</strong> until next unlock</span>
+                <small><strong id="unlockValue">50</strong> points per coupon</small>
+              </div>
+              <div class="meter-track"><span id="progressFill"></span></div>
+            </div>
+          </section>
+
+          <section class="phone-section leaderboard-panel" aria-labelledby="leaderboard-title">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Bimonthly</p>
+                <h2 id="leaderboard-title">Community Leaderboard</h2>
+              </div>
+              <span id="periodLabel" class="soft-label"></span>
+            </div>
+            <div id="leaderboardList" class="leaderboard-list"></div>
+          </section>
+
+          <section class="phone-section" aria-labelledby="resources-title">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Near you</p>
+                <h2 id="resources-title">Coupons & Stores</h2>
+              </div>
+              <span id="locationLabel" class="soft-label"></span>
+            </div>
+            <div id="storesList" class="store-list"></div>
+          </section>
+
+          <nav class="mobile-nav" aria-label="WeCare navigation">
+            <span>Home</span>
+            <strong>Rewards</strong>
+            <span>Profile</span>
+          </nav>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
